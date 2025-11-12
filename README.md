@@ -40,23 +40,27 @@ The goal is to deliver actionable insights that support healthcare decision-maki
 🔍 Key Analysis Areas:
 
 🧍 Patient & Condition Insights:
+
     🔹 Most common diseases and affected age groups
     🔹 Gender distribution across conditions
     🔹 Average stay duration per condition
     🔹 Most prescribed medications and test outcomes
 
 🏥 Hospital & Doctor Performance:
+
     🔹 Hospitals with highest patient intake
     🔹 Average billing amount per hospital
     🔹 Doctor performance based on patient volume or outcomes
     🔹 Admission type trends (Emergency / Elective / Urgent)
 
 💰 Financial & Insurance Analysis:
+
     🔹 Average treatment cost per disease
     🔹 Comparison of insurance providers by clients & cost
     🔹 Billing trends by month and year
 
 📊 Administrative Insights:
+
     🔹 Room occupancy rates and efficiency
     🔹 Seasonal admission and discharge trends
     🔹 Year-over-year case volume analysis
