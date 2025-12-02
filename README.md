@@ -15,8 +15,8 @@ The goal is to deliver actionable insights that support healthcare decision-maki
 🛠️ Tools & Technologies:
 
     🐍 Python – Data cleaning, preprocessing, and exploratory analysis
-    🧮 SQL – Data extraction, transformation, and querying for insights
-    📊 Excel – Pivot tables and summary reports
+    🧮 SQL – Data extraction, preprocessing, and querying for insights
+    📊 Tableau – Overview dashboard
     📈 Power BI – Interactive dashboards and KPI visualization
 
 👥 Stakeholders:
@@ -30,7 +30,7 @@ The goal is to deliver actionable insights that support healthcare decision-maki
 📂 Dataset Overview:
 
     🧍 Patient demographics: Name, Age, Gender, Blood Type
-    💊 Medical details: Condition, Medication, Test Results
+    💊 Medical details: Condition & Test Results
     🏥 Admission data: Admission & Discharge Dates, Doctor, Hospital
     💰 Financial details: Billing Amount, Insurance Provider, Admission Type, Room Number
 
@@ -43,8 +43,7 @@ The goal is to deliver actionable insights that support healthcare decision-maki
 
     🔹 Most common diseases and affected age groups
     🔹 Gender distribution across conditions
-    🔹 Average stay duration per condition
-    🔹 Most prescribed medications and test outcomes
+    🔹 Average stay duration 
 
 🏥 Hospital & Doctor Performance:
 
@@ -61,7 +60,6 @@ The goal is to deliver actionable insights that support healthcare decision-maki
 
 📊 Administrative Insights:
 
-    🔹 Room occupancy rates and efficiency
     🔹 Seasonal admission and discharge trends
     🔹 Year-over-year case volume analysis
 
