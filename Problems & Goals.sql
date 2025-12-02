@@ -61,7 +61,7 @@ WITH AgeDiseaseCounts AS (
         PD.Medical_Condition,           -- Disease name
         P.Age_Group,                    -- Age group of patient
         COUNT(*) AS patient_count,      -- Number of patients in this age group
-        ROW_NUMBER() OVER (             -- Window function: It assigns a ranking (rn) within each disease, ordering the age groups by number of patients in descending order.
+        DENSE_RANK() OVER (             -- Window function: It assigns a ranking (rn) within each disease, ordering the age groups by number of patients in descending order.
             PARTITION BY PD.Medical_Condition
             ORDER BY COUNT(*) DESC
         ) AS rn                         -- age group for each disease = largest number of patients in that disease’s category.
@@ -391,14 +391,11 @@ ORDER BY Total_Billing DESC;
      -- To calculate year-over-year (YoY) changes in admissions both in absolute 
      -- numbers and percentages, providing insights for hospital planning, and resource allocation.
 
--- Yearly admissions with YoY changes, replacing NULL with 0 for the first year
--- Calculate yearly admissions with Year-over-Year (YoY) changes
-
 WITH YearlyAdmissions AS (
     -- Step 1: Count total admissions per year
     SELECT 
-        YEAR(Date_of_Admission) AS Admission_Year,  -- Extract year from admission date
-        COUNT(*) AS Total_Admissions               -- Total admissions in that year
+        YEAR(Date_of_Admission) AS Admission_Year,  	-- Extract year from admission date
+        COUNT(*) AS Total_Admissions               		-- Total admissions in that year
     FROM PatientsData_healthecare_clean
     GROUP BY YEAR(Date_of_Admission)
 )
@@ -412,11 +409,11 @@ SELECT
     -- ISNULL(..., 0) replaces NULL (for the first year) with 0
     ISNULL(LAG(Total_Admissions) OVER (ORDER BY Admission_Year), 0) AS Prev_Year_Admissions,  
    
-   -- Step 3: Calculate absolute YoY change
+   -- Step 3: Calculate YoY change (Current year - Previous year)
     Total_Admissions - ISNULL(LAG(Total_Admissions) OVER (ORDER BY Admission_Year), 0) AS YoY_Change,  
   
-    -- Step 4: Calculate YoY percent change
-    -- Percent change, cast as DECIMAL(5,2)
+    -- Step 4: Calculate YoY percent change ((Current year - previous yaer) * 100 / previous year)
+    -- CAST as DECIMAL(5,2)
   CAST(
         CASE 
             WHEN ISNULL(LAG(Total_Admissions) OVER (ORDER BY Admission_Year), 0) = 0 THEN 0
@@ -426,6 +423,7 @@ SELECT
     ) AS YoY_Percent_Change
 FROM YearlyAdmissions
 ORDER BY Admission_Year;
+
 
 
 
